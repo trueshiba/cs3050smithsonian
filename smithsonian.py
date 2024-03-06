@@ -1,17 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template 
 import traceback
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='front', static_folder='front/css')
+
 
 @app.route('/')
 def hello():
-    return "<p>Hello, World!</p>"
-
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
 
-    # pylint: disable=W0703
     try:
         app.run(debug=app.debug, host='localhost', port=8097)
     except Exception as err:
