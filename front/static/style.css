@@ -8,3 +8,10 @@ header {
     color: #1a0500;
     text-align: center;
 }
+
+.horiz-center {
+    margin: 0;
+    position: absolute;
+    -ms-transform: translateX(-50%);
+    transform: translate(225%);
+  }

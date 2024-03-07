@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smithsonian</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
     <header>
-        <h1>Review Website</h1>
-        <p>Smith reviews website where we review smiths :|  </p>
+        <h1>Smithsonian</h1>
+        <p>  </p>
     </header>
+    <div class="horiz-center">
+    <form id="form"> 
+        <input type="search" id="query" name="q" placeholder="Search Smiths...">
+        <button>Search</button>
+        <div class="dropdown" id="filter-dropdown">
+        <button class="dropbtn">Sort</button>
+        <select id="filter-dropdown-select">
+            <option value="">Sort By</option>
+            <option value="age">Age</option>
+            <option value="name">Name</option>
+            <option value="gen">Gender</option>
+            <option value="rate">Rating</option>
+            <option value="occ">Occupation</option>
+            <option value="born">Year Born</option>
+            <option value="died">Year Died</option>
+        </select>
+    </form>
+    </div>
     
+    <script src="static/script.js"></script>
 </body>
 </html>
