@@ -26,6 +26,27 @@ cursor.execute('''
     )
 ''')
 
+# Load data from CSV file
+with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        # Insert each row from the CSV file into the database
+        cursor.execute('''
+            INSERT INTO Smitbase (full_name, last_name, gender, nationality, occupation, birth_year, death_year, age, rating)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            row['Full Name'],
+            row['Last Name'],
+            row['Gender'],
+            row['Nationality'],
+            row['Occupation'],
+            int(row['Birth Year']),
+            int(row['Death Year']),
+            int(row['Age']),
+            int(row['Rating'])
+        ))
+
+
 
 
 # Commit the transaction (save changes)
