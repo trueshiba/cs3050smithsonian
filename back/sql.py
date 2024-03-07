@@ -26,6 +26,8 @@ cursor.execute('''
     )
 ''')
 
+
+
 # Commit the transaction (save changes)
 conn.commit()
 
