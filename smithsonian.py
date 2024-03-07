@@ -1,7 +1,7 @@
 from flask import Flask, render_template 
 import traceback
 
-app = Flask(__name__, template_folder='front', static_folder='front/css')
+app = Flask(__name__, template_folder='front', static_folder='front/static')
 
 
 @app.route('/')
