@@ -2,13 +2,10 @@ import sqlite3, csv
 
 conn = sqlite3.connect('Smithbase.db')
 
-
 # Create a cursor object to execute SQL commands
 cursor = conn.cursor()
 
-
-# Create a cursor object
-cursor = conn.cursor()
+cursor.execute('DROP TABLE Smithbase')
 
 # Execute an SQL CREATE TABLE statement to create a new table
 cursor.execute('''
@@ -22,9 +19,32 @@ cursor.execute('''
         birth_year INTEGER,
         death_year INTEGER,
         age INTEGER,
-        rating INTEGER
+        rating FLOAT
     )
 ''')
+
+conn.commit()
+
+# Load data from CSV file
+with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        # Insert each row from the CSV file into the database
+        cursor.execute('''
+            INSERT INTO Smithbase (name, last_name, gender, nationality, occupation, birth_year, death_year, age, rating)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            row['Name'],
+            row['Last Name'],
+            row['Gender'],
+            row['Nationality'],
+            row['Occupation'],
+            int(row['Birth Year']),
+            int(row['Death Year']),
+            int(row['Age']),
+            float(row['Rating'])
+        ))
+
 
 # Commit the transaction (save changes)
 conn.commit()
