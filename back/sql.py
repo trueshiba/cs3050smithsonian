@@ -6,6 +6,8 @@ conn = sqlite3.connect('Smithbase.db')
 # Create a cursor object to execute SQL commands
 cursor = conn.cursor()
 
+cursor.execute('DROP TABLE Smithbase')
+
 # Execute an SQL CREATE TABLE statement to create a new table
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS Smithbase (
@@ -18,7 +20,7 @@ cursor.execute('''
         birth_year INTEGER,
         death_year INTEGER,
         age INTEGER,
-        rating INTEGER
+        rating FLOAT
     )
 ''')
 
@@ -34,14 +36,14 @@ with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             row['Name'],
-            row['last_name'],
+            row['Last Name'],
             row['Gender'],
             row['Nationality'],
             row['Occupation'],
             int(row['Birth Year']),
             int(row['Death Year']),
             int(row['Age']),
-            int(row['Rating'])
+            float(row['Rating'])
         ))
 
 
