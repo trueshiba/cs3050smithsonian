@@ -1,11 +1,11 @@
 import sqlite3, csv
 
-conn = sqlite3.connect('Smithbase.db')
+conn = sqlite3.connect('smithbase.db')
 
 # Create a cursor object to execute SQL commands
 cursor = conn.cursor()
 
-cursor.execute('DROP TABLE Smithbase')
+#cursor.execute('DROP TABLE smithbase')
 
 # Execute an SQL CREATE TABLE statement to create a new table
 cursor.execute('''
@@ -26,7 +26,7 @@ cursor.execute('''
 conn.commit()
 
 # Load data from CSV file
-with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
+"""with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         # Insert each row from the CSV file into the database
@@ -43,20 +43,18 @@ with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
             int(row['Death Year']),
             int(row['Age']),
             float(row['Rating'])
-        ))
+        ))"""
 
 
-# Commit the transaction (save changes)
-conn.commit()
-
-"""file = open('../smithbase.csv')
+file = open('smithbase.csv')
 
 contents = csv.reader(file)
 
 insert_records = "INSERT INTO smithbase (name, last_name, gender, nationality, occupation, birth_year, death_year, age, rating) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
 cursor.executemany(insert_records, contents)
-"""
+
+conn.commit()
 
 select_all = "SELECT * FROM smithbase" 
 rows = cursor.execute(select_all).fetchall()
