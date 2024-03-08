@@ -4,7 +4,7 @@ import sqlite3
 
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('back/Smithbase.db')
     return conn
 
 
@@ -14,9 +14,9 @@ app = Flask(__name__, template_folder='front', static_folder='front/static')
 @app.route('/')
 def hello():
     conn = get_db_connection()
-    rows = conn.cursor().fetchall()
+    rows = conn.execute("SELECT * FROM smithbase").fetchall()
     conn.close()
-    return render_template('index.html', data=rows)
+    return render_template('index.html', rows=rows)
 
 
 if __name__ == '__main__':

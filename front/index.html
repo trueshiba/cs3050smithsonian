@@ -27,9 +27,16 @@
             <option value="born">Year Born</option>
             <option value="died">Year Died</option>
         </select>
+        </div>
     </form>
     </div>
-    
+
+    <div class="smith-rows">
+        {% for row in rows %}
+            <h3>{{row}}</h3>
+        {% endfor %}
+    </div>
+
     <script src="static/script.js"></script>
 </body>
 </html>
