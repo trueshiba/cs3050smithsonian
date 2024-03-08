@@ -10,8 +10,10 @@ header {
 }
 
 .horiz-center {
-    margin: 0;
-    position: absolute;
-    -ms-transform: translateX(-50%);
-    transform: translate(225%);
-  }
+    display: grid;
+    justify-content: center;
+}
+
+.smith-rows {
+    margin: 2em;
+}
