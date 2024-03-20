@@ -1,4 +1,4 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template, request, jsonify 
 import traceback
 import sqlite3
 
@@ -22,6 +22,19 @@ def hello():
 def washingsmith():
     conn = get_db_connection()
     row = conn.execute("SELECT 1 FROM smithbase").fetchone()
+    conn.close()
+    return render_template('smith_template.html', name=row[1], lastname=row[2])
+
+@app.route('/search')
+def searchFunction():
+
+    search_query = request.get_json().get('searchQuery')
+    sort_method = request.get_json().get('sortMethod')
+
+    conn = get_db_connection()
+
+    query = ""
+    rows = conn.execute(query, (f'%{search_query}%', sort_method)).fetchall()
     conn.close()
     return render_template('smith_template.html', name=row[1], lastname=row[2])
 

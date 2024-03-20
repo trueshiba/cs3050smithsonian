@@ -10,8 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
         var query = queryInput.value;
         var filter = filterDropdown.value;
 
+        var entries = {
+            searchQuery: query,
+            sortMethod: filter
+        };
+
         console.log("Search Query:", query);
         console.log("Filter Choice:", filter);
+
+        
  
     });
 });
