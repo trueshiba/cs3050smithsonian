@@ -4,7 +4,7 @@ import sqlite3
 
 
 def get_db_connection():
-    conn = sqlite3.connect('back/Smithbase.db')
+    conn = sqlite3.connect('back/smithbase.db')
     return conn
 
 
