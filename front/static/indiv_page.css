@@ -1,0 +1,14 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    background-color: #aadceb;
+}
+header {
+    color: #1a0500;
+    text-align: center;
+}
+.page-image {
+    justify-content: normal;
+    margin: auto;
+}

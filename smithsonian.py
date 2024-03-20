@@ -21,9 +21,10 @@ def hello():
 @app.route('/test')
 def washingsmith():
     conn = get_db_connection()
-    row = conn.execute("SELECT 1 FROM smithbase").fetchone()
+    row = conn.execute("SELECT * FROM smithbase WHERE id=2").fetchall()
     conn.close()
-    return render_template('smith_template.html', name=row[1], lastname=row[2])
+    return render_template('smith_template.html', name=row[0][1], lastname=row[0][2], sex=row[0][3],
+                           nat=row[0][4], occ=row[0][5], age=row[0][8], rate=row[0][9])
 
 
 if __name__ == '__main__':
