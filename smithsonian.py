@@ -18,6 +18,13 @@ def hello():
     conn.close()
     return render_template('index.html', rows=rows)
 
+@app.route('/test')
+def washingsmith():
+    conn = get_db_connection()
+    row = conn.execute("SELECT 1 FROM smithbase").fetchone()
+    conn.close()
+    return render_template('smith_template.html', name=row[1], lastname=row[2])
+
 
 if __name__ == '__main__':
 
