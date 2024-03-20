@@ -33,11 +33,11 @@
 
     <div class="smith-rows">
         {% for row in rows %}
-            <div>
+            <div class="smith-box">
                 <img src="static/pfp.jpg" alt="Smith">
                 <h3>{{row[1]}} {{row[2]}}</h3>
                 <p>ID: {{row[0]}}</p>
-                <p>Sex: {{row[3]}}, Nationality: {{row[4]}}</p>  
+                <p>Sex: {{row[3]}}, Nationality: {{row[4].split(';')[0]}}</p>  
             </div>
         {% endfor %}
     </div>
