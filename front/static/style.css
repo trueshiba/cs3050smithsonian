@@ -22,6 +22,7 @@ header {
 }
 
 .smith-box {
+    background-color: #e5c796;
     border: solid black;
     border-radius: 2em;
     padding: 1em;
