@@ -33,8 +33,9 @@
 
     <div class="smith-rows">
         {% for row in rows %}
-            <div data-pmk='{{row[0]}}' class="smith-box">
-                <img src="static/pfp.jpg" alt="Smith">
+            <!-- data-pmk='{{row[0]}}' -->
+            <div class="smith-box">
+                <a href="http://localhost:8097/{{row[0]}}" target="_blank"> <img src="static/pfp.jpg" alt="Smith"> </a>
                 <h3>{{row[1]}} {{row[2]}}</h3>
                 <table>
                     <tr>
