@@ -35,4 +35,8 @@ def search():
     return render_template('index.html', rows=rows)
 
 if __name__ == '__main__':
-     app.run(debug=True, host='localhost', port=8097)
+    
+    try:
+        app.run(debug=app.debug, host='localhost', port=8097)
+    except Exception as err:
+        traceback.print_exc()
