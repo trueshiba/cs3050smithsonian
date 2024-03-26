@@ -26,16 +26,16 @@ def washingsmith():
     return render_template('smith_template.html', name=row[0][1], lastname=row[0][2], sex=row[0][3],
                            nat=row[0][4], occ=row[0][5], age=row[0][8], rate=row[0][9])
 
-@app.route('/search')
+@app.route('/search', methods = ['GET'])
 def search():
     query = request.args.get('q')
     conn = get_db_connection()
     rows = conn.execute("SELECT * FROM smithbase WHERE name LIKE ?", ('%' + query + '%',)).fetchall()
     conn.close()
-    return render_template('index.html', rows=rows)
+    return render_template('search.html', rows=rows)
 
 if __name__ == '__main__':
-    
+
     try:
         app.run(debug=app.debug, host='localhost', port=8097)
     except Exception as err:
