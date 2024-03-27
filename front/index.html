@@ -34,7 +34,7 @@
     <div class="smith-rows">
         {% for row in rows %}
             <!-- data-pmk='{{row[0]}}' -->
-            <div class="smith-box">
+             <div class="smith-box">
                 <a href="http://localhost:8097/{{row[0]}}" target="_blank"> <img src="static/pfp.jpg" alt="Smith"> </a>
                 <h3>{{row[1]}} {{row[2]}}</h3>
                 <table>
@@ -51,6 +51,7 @@
                         <td>{{row[4].split(';')[0]}}</td>
                     </tr>  
                 </table>
+                 <a href="http://localhost:8097/{{row[0]}}"><button class="button" type="button">Learn More</button></a>
             </div>
         {% endfor %}
     </div>
