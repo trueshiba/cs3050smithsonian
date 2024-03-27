@@ -18,10 +18,12 @@ def hello():
     conn.close()
     return render_template('index.html', rows=rows)
 
-@app.route('/test')
-def washingsmith():
+
+@app.route('/<string:id>')
+def washingsmith(id):
     conn = get_db_connection()
-    row = conn.execute("SELECT * FROM smithbase WHERE id=2").fetchall()
+    sqlQuery = "SELECT * FROM smithbase WHERE id=" + id
+    row = conn.execute(sqlQuery).fetchall()
     conn.close()
     return render_template('smith_template.html', name=row[0][1], lastname=row[0][2], sex=row[0][3],
                            nat=row[0][4], occ=row[0][5], age=row[0][8], rate=row[0][9])
@@ -30,6 +32,7 @@ def washingsmith():
 if __name__ == '__main__':
 
     try:
+        # Change debug=app.debug -> debug=True for auto reloading while coding and saving
         app.run(debug=app.debug, host='localhost', port=8097)
     except Exception as err:
         traceback.print_exc()
