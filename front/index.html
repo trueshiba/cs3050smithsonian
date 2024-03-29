@@ -12,20 +12,19 @@
         <p>  </p>
     </header>
     <div class="horiz-center">
-    <form id="form" action="/search" method="GET">
+    <form id="form" method="post">
         <input type="search" id="query" name="q" placeholder="Search Smiths...">
         <button>Search</button>
         <div class="dropdown" id="filter-dropdown">
-        <button class="dropbtn">Sort</button>
         <select id="filter-dropdown-select">
             <option value="">Sort By</option>
+            <option value="last_name">Last Name</option>
+            <option value="nationality">Nationality</option>
+            <option value="occupation">Occupation</option>
+            <option value="birth_year">Year Born</option>
+            <option value="death_year">Year Died</option>
             <option value="age">Age</option>
-            <option value="name">Name</option>
-            <option value="gen">Gender</option>
-            <option value="rate">Rating</option>
-            <option value="occ">Occupation</option>
-            <option value="born">Year Born</option>
-            <option value="died">Year Died</option>
+
         </select>
         </div>
     </form>
@@ -34,7 +33,7 @@
     <div class="smith-rows">
         {% for row in rows %}
             <!-- data-pmk='{{row[0]}}' -->
-            <div class="smith-box">
+             <div class="smith-box">
                 <a href="http://localhost:8097/{{row[0]}}" target="_blank"> <img src="static/pfp.jpg" alt="Smith"> </a>
                 <h3>{{row[1]}} {{row[2]}}</h3>
                 <table>
@@ -49,12 +48,13 @@
                     <tr>
                         <th>Nationality:</th>
                         <td>{{row[4].split(';')[0]}}</td>
-                    </tr>  
+                    </tr>
                 </table>
+                 <a href="http://localhost:8097/{{row[0]}}"><button class="button" type="button">Learn More</button></a>
             </div>
         {% endfor %}
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="static/script.js"></script>
 </body>
 </html>

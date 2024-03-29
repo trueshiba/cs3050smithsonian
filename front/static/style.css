@@ -2,7 +2,7 @@ body {
     font-family: Arial;
     margin: 0;
     padding: 0;
-    background-color: #aadceb;
+    background-color: #e6f8fc;
 }
 header {
     color: #1a0500;
@@ -28,3 +28,11 @@ header {
     padding: 1em;
 }
 
+.button {
+    background-color: #18dfe2;
+    border: none;
+    color: black;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+}
