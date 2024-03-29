@@ -1,4 +1,4 @@
-import sqlite3, csv
+import sqlite3, csv, os
 
 conn = sqlite3.connect('smithbase.db')
 
@@ -25,6 +25,11 @@ cursor.execute('''
 
 conn.commit()
 
+current_working_directory = os.getcwd()
+
+# print output to the console
+print(current_working_directory)
+
 # Load data from CSV file
 """with open('smithbase.csv', 'r', newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile)
@@ -46,7 +51,7 @@ conn.commit()
         ))"""
 
 
-file = open('smithbase.csv')
+file = open('back\smithbase.csv')
 
 contents = csv.reader(file)
 
