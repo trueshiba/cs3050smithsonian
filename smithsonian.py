@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, redirect, render_template, request, jsonify, url_for
 import traceback
 import sqlite3
 
@@ -10,9 +10,14 @@ def get_db_connection():
 
 app = Flask(__name__, template_folder='front', static_folder='front/static')
 
-
 @app.route('/')
-def hello():
+def start():
+    return redirect(url_for("home"), code=302)
+
+
+@app.route('/home', methods=['GET','POST'])
+def home():    
+
     conn = get_db_connection()
     rows = conn.execute("SELECT * FROM smithbase").fetchall()
     conn.close()
