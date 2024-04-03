@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smithsonian</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
@@ -13,7 +12,7 @@
         <p>  </p>
     </header>
     <div class="horiz-center">
-    <form id="form" method="post">
+    <form id="form" method="post"> 
         <input type="search" id="query" name="q" placeholder="Search Smiths...">
         <button>Search</button>
         <div class="dropdown" id="filter-dropdown">
@@ -25,37 +24,23 @@
             <option value="birth_year">Year Born</option>
             <option value="death_year">Year Died</option>
             <option value="age">Age</option>
-
+            <option value="rating">Rating</option>
         </select>
         </div>
     </form>
     </div>
 
-    <div class="smith-rows">
+    <div id = "search-results" class="smith-rows">
         {% for row in rows %}
-            <!-- data-pmk='{{row[0]}}' -->
-             <div class="smith-box">
-                <a href="http://localhost:8097/{{row[0]}}" target="_blank"> <img src="static/pfp.jpg" alt="Smith"> </a>
-                <h3>{{row[1]}} {{row[2]}}</h3>
-                <table>
-                    <tr>
-                        <th>ID:</th>
-                        <td>{{row[0]}}</td>
-                    </tr>
-                    <tr>
-                        <th>Sex:</th>
-                        <td>{{row[3]}}</td>
-                    </tr>
-                    <tr>
-                        <th>Nationality:</th>
-                        <td>{{row[4].split(';')[0]}}</td>
-                    </tr>
-                </table>
-                 <a href="http://localhost:8097/{{row[0]}}"><button class="button" type="button">Learn More</button></a>
+            <div class="smith-box">
+                <img src="static/pfp.jpg" alt="Smith">
+                <h3>{{ row[1] }} {{ row[2] }}</h3>
+                <p>ID: {{ row[0] }}</p>
+                <p>Sex: {{ row[3] }}, Nationality: {{ row[4] }}</p> 
             </div>
         {% endfor %}
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <script src="static/script.js"></script>
 </body>
 </html>
