@@ -41,7 +41,9 @@ def searchFunction():
         
 
         #return render_template('index.html', rows=rows2)
-
+        if len(rows2) == 0:
+            return ""
+        
         return jsonify(rows2)
 
     except Exception as e:
