@@ -1,0 +1,27 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    background-color: #aadceb;
+}
+header {
+    color: #1a0500;
+    text-align: center;
+}
+.pfp {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 33%;
+    height: auto;
+    border-radius: 50%;
+}
+.info {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+p {
+    font-family: "Bradley Hand ITC";
+}

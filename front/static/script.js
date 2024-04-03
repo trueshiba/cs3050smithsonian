@@ -59,4 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 searchResultsDiv.appendChild(smithBox);
         });
     }
+<<<<<<< HEAD
 }); 
+=======
+}); 
+>>>>>>> 9c1df6fa197d7c0b44d0124f6321fb7c4575baa9

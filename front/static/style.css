@@ -22,8 +22,17 @@ header {
 }
 
 .smith-box {
+    background-color: #e5c796;
     border: solid black;
     border-radius: 2em;
     padding: 1em;
 }
 
+.button {
+    background-color: #18dfe2;
+    border: none;
+    color: black;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+}

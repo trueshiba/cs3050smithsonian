@@ -1,18 +1,35 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, request, jsonify
+=======
+from flask import Flask, redirect, render_template, request, jsonify, url_for
+>>>>>>> 9c1df6fa197d7c0b44d0124f6321fb7c4575baa9
 import traceback
 import sqlite3
 
 
 def get_db_connection():
+<<<<<<< HEAD
     conn = sqlite3.connect('smithbase.db')
+=======
+    conn = sqlite3.connect('back/smithbase.db')
+>>>>>>> 9c1df6fa197d7c0b44d0124f6321fb7c4575baa9
     return conn
 
 
 app = Flask(__name__, template_folder='front', static_folder='front/static')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9c1df6fa197d7c0b44d0124f6321fb7c4575baa9
 
 @app.route('/')
-def hello():
+def start():
+    return redirect(url_for("home"), code=302)
+
+
+@app.route('/home', methods=['GET','POST'])
+def home():    
+
     conn = get_db_connection()
     rows = conn.execute("SELECT * FROM smithbase").fetchall()
     conn.close()
@@ -40,7 +57,11 @@ def searchFunction():
 
         
 
+<<<<<<< HEAD
         #return render_template('index.html', rows=rows2)
+=======
+       #return render_template('index.html', rows=rows2)
+>>>>>>> 9c1df6fa197d7c0b44d0124f6321fb7c4575baa9
 
         return jsonify(rows2)
 
