@@ -1,6 +1,6 @@
 import sqlite3, csv, os
 
-conn = sqlite3.connect('smithbase.db')
+conn = sqlite3.connect('./smithbase.db')
 
 # Create a cursor object to execute SQL commands
 cursor = conn.cursor()
@@ -51,7 +51,7 @@ print(current_working_directory)
         ))"""
 
 
-file = open('back\smithbase.csv')
+file = open('smithbase.csv')
 
 contents = csv.reader(file)
 
