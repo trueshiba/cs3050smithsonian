@@ -46,9 +46,9 @@ def searchFunction():
         print("Number of rows found:", len(rows2))
         print("Rows:", rows2)
 
-        return render_template('index.html', rows=rows2)
+       #return render_template('index.html', rows=rows2)
 
-        #return jsonify(rows2)
+        return jsonify(rows2)
 
     except Exception as e:
         traceback.print_exc()
@@ -65,6 +65,7 @@ def washingsmith(id):
                            nat=row[0][4], occ=row[0][5], age=row[0][8], rate=row[0][9])
 
 if __name__ == '__main__':
+    app.debug = True
 
     try:
         # Change debug=app.debug -> debug=True for auto reloading while coding and saving
