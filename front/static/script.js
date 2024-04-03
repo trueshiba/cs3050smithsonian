@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
             data: JSON.stringify(entries),
             success: function(response) {
                 console.log(response); // print resulting html to console
+                if (response == ""){
+                    displayNone()
+                }
                 displayResults(response); // display results using display function
             },
             error: function(xhr, status, error) {
@@ -58,5 +61,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
                 searchResultsDiv.appendChild(smithBox);
         });
+    }
+
+    function displayNone() {
+        var stp = document.createElement("h3");
+        nameHeader.textContent = "No results found.";
     }
 }); 
