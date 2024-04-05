@@ -3,14 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smithsonian</title>
+    <title>{{name}} {{lastname}}</title>
     <link rel="stylesheet" href="static/indiv_page.css">
 </head>
 <body>
     <header>
         <h1>{{name}} {{lastname}}</h1>
-        <p>     </p>
+        <p>Character Sheet</p>
     </header>
-
+    <div class="background-container">
+        <div class="background-image"></div>
+    </div>
+    <div class="character-sheet">
+        <div class="profile-image">
+            <img src="static/pfp.jpg" alt="Smith">
+        </div>
+        <div class="rating-stars">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+        </div>
+        <div class="attributes">
+            <table>
+                <tr>
+                    <td>Sex:</td>
+                    <td>{{sex}}</td>
+                </tr>
+                <tr>
+                    <td>Nationality:</td>
+                    <td>{{nat}}</td>
+                </tr>
+                <tr>
+                    <td>Occupation:</td>
+                    <td>{{occ}}</td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td>{{age}}</td>
+                </tr>
+                <tr>
+                    <td>Rating:</td>
+                    <td class="rating">{{rate}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 </html>

@@ -36,32 +36,85 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     // function to display the results
-     function displayResults(data) {
-    
+    function displayResults(data) {
         var searchResultsDiv = document.getElementById("search-results");
-        searchResultsDiv.innerHTML = ""; // clear html
-
-        // loop thru list elements and format them 
-            data.forEach(function(row) {
-                var smithBox = document.createElement("div");
-                smithBox.classList.add("smith-box");
+        searchResultsDiv.innerHTML = ""; // Clear previous results
         
-                var image = document.createElement("img");
-                image.src = "static/pfp.jpg";
-                image.alt = "Smith";
-                smithBox.appendChild(image);
-
-                var nameHeader = document.createElement("h3");
-                nameHeader.textContent = row[1] + " " + row[2];
-                smithBox.appendChild(nameHeader);
-
-                var detailsParagraph = document.createElement("p");
-                detailsParagraph.textContent = "Sex: " + row[3] + ", Nationality: " + row[4];
-                smithBox.appendChild(detailsParagraph);
-        
-                searchResultsDiv.appendChild(smithBox);
+        data.forEach(function(row) {
+            var smithBox = document.createElement("div");
+            smithBox.classList.add("smith-box");
+    
+            var anchor = document.createElement("a");
+            anchor.href = "http://localhost:8097/" + row[0];
+            anchor.target = "_blank";
+            smithBox.appendChild(anchor);
+    
+            var image = document.createElement("img");
+            image.src = "static/pfp.jpg";
+            image.alt = "Smith";
+            anchor.appendChild(image);
+    
+            var nameHeader = document.createElement("h3");
+            nameHeader.textContent = row[1] + " " + row[2];
+            smithBox.appendChild(nameHeader);
+    
+            var table = document.createElement("table");
+            smithBox.appendChild(table);
+    
+            var idRow = document.createElement("tr");
+            var idHeader = document.createElement("th");
+            idHeader.textContent = "ID:";
+            var idData = document.createElement("td");
+            idData.textContent = row[0];
+            idRow.appendChild(idHeader);
+            idRow.appendChild(idData);
+            table.appendChild(idRow);
+    
+            var sexRow = document.createElement("tr");
+            var sexHeader = document.createElement("th");
+            sexHeader.textContent = "Sex:";
+            var sexData = document.createElement("td");
+            sexData.textContent = row[3];
+            sexRow.appendChild(sexHeader);
+            sexRow.appendChild(sexData);
+            table.appendChild(sexRow);
+    
+            var nationalityRow = document.createElement("tr");
+            var nationalityHeader = document.createElement("th");
+            nationalityHeader.textContent = "Nationality:";
+            var nationalityData = document.createElement("td");
+            nationalityData.textContent = row[4].split(';')[0];
+            nationalityRow.appendChild(nationalityHeader);
+            nationalityRow.appendChild(nationalityData);
+            table.appendChild(nationalityRow);
+    
+            var learnMoreButton = document.createElement("a");
+            learnMoreButton.href = "http://localhost:8097/" + row[0];
+            var button = document.createElement("button");
+            button.classList.add("button");
+            button.textContent = "Learn More";
+            learnMoreButton.appendChild(button);
+            smithBox.appendChild(learnMoreButton);
+    
+            searchResultsDiv.appendChild(smithBox);
         });
     }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        var rating = parseFloat(document.querySelector('.rating').textContent);
+        var starsContainer = document.querySelector('.rating-stars');
+        var numStars = Math.round(rating);
+    
+        // Clear previous stars
+        starsContainer.innerHTML = '';
+    
+        // Generate filled stars
+        for (var i = 0; i < numStars; i++) {
+            var star = document.createElement("span");
+            star.classList.add("star");
+            starsContainer.appendChild(star);
+        }
+    });
 
     function displayNone() {
         var stp = document.createElement("h3");

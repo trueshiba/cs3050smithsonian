@@ -1,18 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Libre Bodoni", monospace;
+}
+
 body {
-    font-family: Arial;
     margin: 0;
     padding: 0;
-    background-color: #e6f8fc;
+    background-image: linear-gradient(rgba(237, 237, 237, 0.6),rgba(0, 0, 0, 0.045)), url(news.jpg);
 }
 header {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 900px;
     color: #1a0500;
+    background: transparent;
     text-align: center;
+    align-items: center;
+    font-size: 35px;
+    backdrop-filter: blur(2px) saturate(100%);
+    border-radius: 60px;
+    padding: 30px 20px;
+}
+
+header h1 {
+    border-bottom: 2px solid #1a0500;
+
+}
+
+header p {
+    font-size: 20px;
+    padding: 1em;
 }
 
 .horiz-center {
     display: grid;
     justify-content: center;
+    background-color: rgb(255, 255, 255);
+
 }
+
+.form-style {
+    width: 100%;
+    background: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+
+}
+.logo {
+    width: 180px;
+    cursor: pointer;
+}
+.search-bar {
+    width: 100%;
+    max-width: 700px;
+    background: #e8e5dd;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+}
+
+.search-bar input {
+    background: #e8e5dd;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color:black;
+}
+
+::placeholder {
+    color: black;
+}
+
+.search-bar button img{
+    width: 25px;
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: white;
+    cursor: pointer;
+}
+
+.dropdown {
+    width: 100%;
+    max-width: 700px;
+    background: #e8e5dd;
+    flex: 1;
+    border: 0;
+    outline: none;
+    border-radius: 60px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.dropdown select {
+    flex: 1;
+    border: 0;
+    outline: none;
+    align-items: center;
+    background: #e8e5dd;
+}
+
+.dropdown option {
+    flex: 1;
+    border: 0;
+    outline: none;
+    align-items: center;
+}
+
+
 
 .smith-rows {
     display: flex;
@@ -22,8 +132,44 @@ header {
 }
 
 .smith-box {
-    border: solid black;
+    background-color: #e8e5dd;
     border-radius: 2em;
+    margin: 1em;
     padding: 1em;
+    max-width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+.smith-box img {
+    position: relative;
+    border: 2px solid black; 
+    border-radius: 50%;
+    width: 100%; 
+    height: auto; 
+}
+
+.smith-box .names {
+    margin: 10px 0; 
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+}
+
+.smith-box .button {
+    background-color: #18dfe2;
+    border: none;
+    color: black;
+    text-align: center;
+    border-radius: 12px;
+    padding: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.smith-box .button:hover {
+    background-color: #1499a9;
+}
