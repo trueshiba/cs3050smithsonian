@@ -24,6 +24,7 @@ def searchFunction():
         data = request.get_json()
         search_query = data.get('searchQuery')
         sort_method = data.get('sortMethod')
+        rows2 = []
 
         print(search_query, sort_method)
 
@@ -38,12 +39,9 @@ def searchFunction():
 
         conn.close()
 
-        
-
         #return render_template('index.html', rows=rows2)
-        if len(rows2) == 0:
-            return ""
         
+        print(rows2)
         return jsonify(rows2)
 
     except Exception as e:

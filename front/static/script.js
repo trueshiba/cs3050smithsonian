@@ -25,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
             data: JSON.stringify(entries),
             success: function(response) {
                 console.log(response); // print resulting html to console
-                if (response == ""){
-                    displayNone()
-                }
-                displayResults(response); // display results using display function
+                if (response.length === 0) { // if there are no results
+                    displayNone(); //display a message that no results were found
+                } 
+                else {
+                    displayResults(response); // display results using display function
+                    } 
             },
             error: function(xhr, status, error) {
                 console.error(error);    
@@ -117,7 +119,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function displayNone() {
-        var stp = document.createElement("h3");
-        nameHeader.textContent = "No results found.";
+        var searchResultsDiv = document.getElementById("search-results");
+        searchResultsDiv.innerHTML = ""; // Clear previous results
+
+        var none = document.createElement("h3"); //adding text indicating no results found
+        none.textContent = "No results found.";
+        none.style.color = "white";                 //changing text color and border for visibility
+        none.style.textShadow = "2px 2px 0 black"; 
+        searchResultsDiv.appendChild(none);
+
+    
     }
 }); 
