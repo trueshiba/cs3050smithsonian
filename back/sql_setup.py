@@ -5,7 +5,8 @@ conn = sqlite3.connect('./smithbase.db')
 # Create a cursor object to execute SQL commands
 cursor = conn.cursor()
 
-#cursor.execute('DROP TABLE smithbase')
+# Delete current (and presumably out of date) table
+cursor.execute('DROP TABLE IF EXISTS smithbase')
 
 # Execute an SQL CREATE TABLE statement to create a new table
 cursor.execute('''
@@ -20,6 +21,15 @@ cursor.execute('''
         death_year INTEGER,
         age INTEGER,
         rating FLOAT
+    )
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS reviews (
+        reviewId INTEGER PRIMARY KEY,
+        smithId INTEGER NOT NULL,
+        rating FLOAT,
+        review TEXT
     )
 ''')
 
