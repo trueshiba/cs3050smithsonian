@@ -23,7 +23,7 @@ def main():
             birth_year INTEGER,
             death_year INTEGER,
             age INTEGER,
-            rating FLOAT
+            overall_rating FLOAT
         )
     ''')
 
@@ -63,7 +63,7 @@ def main():
                 float(row['Rating'])
             ))"""
 
-    populate('smithbase',"(name, last_name, gender, nationality, occupation, birth_year, death_year, age, rating) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)")
+    populate('smithbase',"(name, last_name, gender, nationality, occupation, birth_year, death_year, age, overall_rating) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)")
 
     populate('reviews', "(smith_id, rating, review) VALUES(?, ?, ?)")
 
