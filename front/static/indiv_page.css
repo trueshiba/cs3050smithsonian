@@ -9,6 +9,26 @@ body {
     background-color: #ebede2;
 }
 
+.back {
+    width: 100%;
+    background: white;
+    padding: 2em;
+}
+
+.back .back-btn {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back .back-btn:hover{
+    border-radius: 60px;
+    background-color: #18dfe2;
+}
+
 header {
     text-align: center;
     padding: 30px;
