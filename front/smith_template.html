@@ -55,19 +55,21 @@
     </div>
     
     <div class="display-reviews">
-        {% for review in reviews %}
         <p>Reviews</p>
         <table>
+        {% for review in reviews %}
+        
             <tr>
                 <td>Rating:</td>
-                <td>{{review[1]}}</td>
+                <td>{{review[0]}}</td>
             </tr>
             <tr>
                 <td>Review:</td>
-                <td>{{review[2]}}</td>
+                <td>{{review[1]}}</td>
             </tr>
+        
+            {% endfor %}
         </table>
-
     </div>
 
     <div class="write-review">

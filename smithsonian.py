@@ -55,9 +55,10 @@ def searchFunction():
         return jsonify({'error': str(e)})
 
 
-@app.route('/<string:id>')
+@app.route('/<string:id>', methods=['GET', 'POST'])
 def profile(id):
     conn = get_db_connection()
+    
     sqlQueryProfile = "SELECT * FROM smithbase WHERE id=" + id ## Easy sql injection attack here by changing what ID is!!!!
     sqlQueryReviews = "SELECT rating, review FROM reviews INNER JOIN smithbase ON smithbase.id=reviews.smith_id WHERE smithbase.id=" + id
     profileRow = conn.execute(sqlQueryProfile).fetchall()
