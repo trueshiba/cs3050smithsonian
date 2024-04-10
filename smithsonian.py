@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for, redirect
 import traceback
 import sqlite3
 
@@ -12,11 +12,17 @@ app = Flask(__name__, template_folder='front', static_folder='front/static')
 
 
 @app.route('/')
-def hello():
+def start():
+    return redirect(url_for("home"), code=302)
+
+
+@app.route('/home')
+def home():
     conn = get_db_connection()
     rows = conn.execute("SELECT * FROM smithbase").fetchall()
     conn.close()
     return render_template('index.html', rows=rows)
+
 
 @app.route('/search', methods=['POST'])
 def searchFunction():
@@ -52,7 +58,7 @@ def searchFunction():
 @app.route('/<string:id>')
 def washingsmith(id):
     conn = get_db_connection()
-    sqlQuery = "SELECT * FROM smithbase WHERE id=" + id
+    sqlQuery = "SELECT * FROM smithbase WHERE id=" + id ## Easy sql injection attack here by changing what ID is!!!!
     row = conn.execute(sqlQuery).fetchall()
     conn.close()
     return render_template('smith_template.html', name=row[0][1], lastname=row[0][2], sex=row[0][3],
