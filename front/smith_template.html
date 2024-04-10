@@ -55,15 +55,16 @@
     </div>
     
     <div class="display-reviews">
+        {% for review in reviews %}
         <p>Reviews</p>
         <table>
             <tr>
                 <td>Rating:</td>
-                <td>{{rate}}</td>
+                <td>{{review[1]}}</td>
             </tr>
             <tr>
                 <td>Review:</td>
-                <td>{{review}}</td>
+                <td>{{review[2]}}</td>
             </tr>
         </table>
 

@@ -110,3 +110,20 @@ td:first-child {
     background-size: cover;
 }
 
+.display-reviews{
+    width: 100%;
+    background: transparent;
+    padding: 5em;
+    margin: 1%;
+    border: none;
+}
+
+.display-reviews p{
+    padding: 2em;
+    font-size: 35px;
+    text-align: center;
+}
+
+.display-reviews tr{
+    background: white;
+}
