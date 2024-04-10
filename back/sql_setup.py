@@ -31,7 +31,7 @@ def main():
         CREATE TABLE IF NOT EXISTS reviews (
             review_id INTEGER PRIMARY KEY,
             smith_id INTEGER NOT NULL,
-            rating FLOAT,
+            rating INTEGER,
             review TEXT
         )
     ''')
