@@ -63,14 +63,14 @@ document.addEventListener("DOMContentLoaded", function() {
             var table = document.createElement("table");
             smithBox.appendChild(table);
     
-            var idRow = document.createElement("tr");
-            var idHeader = document.createElement("th");
-            idHeader.textContent = "ID:";
-            var idData = document.createElement("td");
-            idData.textContent = row[0];
-            idRow.appendChild(idHeader);
-            idRow.appendChild(idData);
-            table.appendChild(idRow);
+            var ratingRow = document.createElement("tr");
+            var ratingHeader = document.createElement("th");
+            ratingHeader.textContent = "Rating:";
+            var ratingData = document.createElement("td");
+            ratingData.textContent = row[9];
+            ratingRow.appendChild(ratingHeader);
+            ratingRow.appendChild(ratingDataData);
+            table.appendChild(ratingRowRow);
     
             var sexRow = document.createElement("tr");
             var sexHeader = document.createElement("th");
