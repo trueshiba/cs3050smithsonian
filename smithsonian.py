@@ -64,29 +64,28 @@ def washingsmith(id):
     return render_template('smith_template.html', name=row[0][1], lastname=row[0][2], sex=row[0][3],
                            nat=row[0][4], occ=row[0][5], age=row[0][8], rate=row[0][9])
 
-#@app.route('/rate', methods=['POST'])
-#def rateFunction():
-  #  try:
- #       data = request.get_json()
-   #     rating = data.get('rating')
-  #      review = data.get('review')
+@app.route('/rate', methods=['POST'])
+def rateFunction(id):
+    try:
+        data = request.get_json()
+        rating = data.get('rating')
+        review = data.get('review')
 
- #       print(rating, review)
-#
-#        conn = get_db_connection()
+        print(rating, review)
 
-  #      query = "UPDATE smithbase SET rating = ?, review = ? WHERE CustomerID = ?;"
- #       conn.execute(query, ('%' + rating + '%', '%' + review + '%', '%' + id + '%')).fetchall()
+        conn = get_db_connection()
 
-#        conn.close()
+        query = "UPDATE smithbase SET rating = ?, review = ? WHERE CustomerID = ?;"
+        conn.execute(query, ('%' + rating + '%', '%' + review + '%', '%' + id + '%'))
+        conn.close()
 
         #return render_template('index.html', rows=rows2)
         
         #return jsonify(rows2)
-#
-#    except Exception as e:
- #       traceback.print_exc()
- #       return jsonify({'error': str(e)})
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({'error': str(e)})
 
 
 

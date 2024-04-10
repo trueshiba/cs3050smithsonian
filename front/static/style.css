@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(rgba(237, 237, 237, 0.6),rgba(0, 0, 0, 0.045)), url(news.jpg);
+    background-image: linear-gradient(rgba(237, 237, 237, 0.6),rgba(0, 0, 0, 0.045)), url(img/news.jpg);
 }
 header {
     margin: 10px auto;

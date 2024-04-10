@@ -15,11 +15,11 @@
     <div class="horiz-center">
 
         <form id="form" method="post" class="form-style" >
-            <img src="static/logo.png" class="logo"> 
+            <img src="img/logo.png" class="logo"> 
 
             <div class="search-bar">
                 <input type="search" id="query" name="q" placeholder="Search Smiths...">
-                <button type="submit"><img src="static/search-btn.png"></button>
+                <button type="submit"><img src="img/search-btn.png"></button>
             </div>
 
             <div class="dropdown" id="filter-dropdown">
@@ -40,7 +40,7 @@
     <div id="search-results" class="smith-rows">
         {% for row in rows %}
         <div class="smith-box">
-            <a href="http://localhost:8097/{{row[0]}}" target="_blank"> <img src="static/pfp.jpg" alt="Smith"> </a>
+            <a href="http://localhost:8097/{{row[0]}}" target="_blank"> <img src="img/pfp.jpg" alt="Smith"> </a>
             <h3 class="names">{{row[1]}} {{row[2]}}</h3>
             <table>
                 <tr>

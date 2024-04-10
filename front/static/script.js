@@ -102,21 +102,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
-    document.addEventListener("DOMContentLoaded", function() {
-        var rating = parseFloat(document.querySelector('.rating').textContent);
-        var starsContainer = document.querySelector('.rating-stars');
-        var numStars = Math.round(rating);
-    
-        // Clear previous stars
-        starsContainer.innerHTML = '';
-    
-        // Generate filled stars
-        for (var i = 0; i < numStars; i++) {
-            var star = document.createElement("span");
-            star.classList.add("star");
-            starsContainer.appendChild(star);
-        }
-    });
 
     function displayNone() {
         var searchResultsDiv = document.getElementById("search-results");

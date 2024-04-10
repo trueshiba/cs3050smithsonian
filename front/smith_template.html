@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="back">
-        <a href="http://localhost:8097/home"><button class="back-btn" type="submit"><img src="static/back-button.png"></button></a>
+        <a href="http://localhost:8097/home"><button class="back-btn" type="submit"><img src="img/back-button.png"></button></a>
     </div>
     <header>
         <h1>{{name}} {{lastname}}</h1>
@@ -19,7 +19,7 @@
     </div>
     <div class="character-sheet">
         <div class="profile-image">
-            <img src="static/pfp.jpg" alt="Smith">
+            <img src="img/pfp.jpg" alt="Smith">
         </div>
         <div class="rating-stars">
             <span class="star"></span>
@@ -53,14 +53,27 @@
             </table>
         </div>
     </div>
-    <div class="review">
-        <form action="/action_page.php">
-            <label for="rating">Rating out of 5:</label>
-            <input type="number" id="rating" name="rating"><br><br>
-            <label for="review">Write a review</label>
-            <input type="text" id="review" name="review"><br><br>
-            <input type="submit" value="Submit">
-          </form>
+    <div class="horiz-center">
+        <div class="review">
+            <form id="form" method="post" class="form-style" >
+                <div class="review">
+                    <input  id="reviw" name="rev" placeholder="Write a review...">
+                    <button type="submit">Submit</button>
+                </div>
+                <div class="dropdown" id="rate-dropdown">
+                    <select id="rate-select">
+                        <option value="">Rate Smith</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </form>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="static/template_script.js"></script>
 </body>
 </html>
