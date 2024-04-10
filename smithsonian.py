@@ -56,19 +56,25 @@ def searchFunction():
 
 
 @app.route('/<string:id>')
-def washingsmith(id):
+def profile(id):
     conn = get_db_connection()
-    sqlQuery = "SELECT * FROM smithbase WHERE id=" + id ## Easy sql injection attack here by changing what ID is!!!!
-    row = conn.execute(sqlQuery).fetchall()
+    sqlQueryProfile = "SELECT * FROM smithbase WHERE id=" + id ## Easy sql injection attack here by changing what ID is!!!!
+    sqlQueryReviews = "SELECT rating, review FROM reviews INNER JOIN smithbase ON smithbase.id=reviews.smith_id WHERE smithbase.id=" + id
+    profileRow = conn.execute(sqlQueryProfile).fetchall()
+    reviewRows = conn.execute(sqlQueryReviews).fetchall()
+    print(reviewRows)
     conn.close()
-    return render_template('smith_template.html', name=row[0][1], lastname=row[0][2], sex=row[0][3],
-                           nat=row[0][4], occ=row[0][5], age=row[0][8], rate=row[0][9])
+    return render_template('smith_template.html', 
+                            name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], age=profileRow[0][8], rate=profileRow[0][9],
+                            reviews=reviewRows
+                            )
+
 
 if __name__ == '__main__':
     app.debug = True
 
     try:
         # Change debug=app.debug -> debug=True for auto reloading while coding and saving
-        app.run(debug=app.debug, host='localhost', port=8097)
+        app.run(debug=False, host='localhost', port=8097)
     except Exception as err:
         traceback.print_exc()
