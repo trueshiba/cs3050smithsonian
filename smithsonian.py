@@ -88,7 +88,7 @@ def profile(id):
     
     conn.close()
     return render_template('smith_template.html', 
-                            name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], age=profileRow[0][8], rate=profileRow[0][9],
+                            id=profileRow[0][0], name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], age=profileRow[0][8], rate=profileRow[0][9],
                             reviews=reviewRows
                             )
 
@@ -97,6 +97,8 @@ def profile(id):
 @app.route('/rate/<int:id>', methods=['POST'])
 def rateFunction(id):
     try:
+
+        print("Entered Rating Route!")
         data = request.get_json()
         rating = data.get('rating5')
         review = data.get('reviewWritten')
