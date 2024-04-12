@@ -7,11 +7,11 @@ cursor = conn.cursor()
 
 def main():
 
-    # Delete current (and presumably out of date) table
+    # Delete current (and presumably out of date) tables
     cursor.execute('DROP TABLE IF EXISTS smithbase')
     cursor.execute('DROP TABLE IF EXISTS reviews')
 
-    # Execute an SQL CREATE TABLE statement to create a new table
+    # Execute SQL CREATE TABLE statements to create new empty tables
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS smithbase (
             id INTEGER PRIMARY KEY,
@@ -63,6 +63,7 @@ def main():
                 float(row['Rating'])
             ))"""
 
+    # Janky function for filling up the tables with data from their .csv files
     populate('smithbase',"(name, last_name, gender, nationality, occupation, birth_year, death_year, age, overall_rating) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)")
 
     populate('reviews', "(smith_id, rating, review) VALUES(?, ?, ?)")
@@ -71,11 +72,14 @@ def main():
 
 def populate(tableName, parameter):
 
+    # string concat to have correct form of filename before opening
     fileName = tableName + '.csv'
     file = open(fileName)
 
+    # load file into csv reader
     contents = csv.reader(file)
 
+    # sql statement setup
     insert_records = "INSERT INTO " + tableName + " " + parameter
     print(insert_records)
 
@@ -91,4 +95,8 @@ def populate(tableName, parameter):
         print(r)
 
 
-main()
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as err:
+        print(err)
