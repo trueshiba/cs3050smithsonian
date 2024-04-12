@@ -94,29 +94,30 @@ def profile(id):
 
 
 
-#@app.route('/rate', methods=['POST'])
-#def rateFunction():
-  #  try:
- #       data = request.get_json()
-   #     rating = data.get('rating')
-  #      review = data.get('review')
+@app.route('/rate/<int:id>', methods=['POST'])
+def rateFunction(id):
+    try:
+        data = request.get_json()
+        rating = data.get('rating5')
+        review = data.get('reviewWritten')
 
- #       print(rating, review)
-#
-#        conn = get_db_connection()
+        print(id, rating, review)
 
-  #      query = "UPDATE smithbase SET rating = ?, review = ? WHERE CustomerID = ?;"
- #       conn.execute(query, ('%' + rating + '%', '%' + review + '%', '%' + id + '%')).fetchall()
+        conn = get_db_connection()
 
-#        conn.close()
+        query = "UPDATE smithbase SET rating = ?, review = ? WHERE CustomerID = ?;"
+        conn.execute(query, (rating, review, id))
+        conn.commit() 
 
-        #return render_template('index.html', rows=rows2)
+        conn.close()
+
+        return render_template('smith_template.html', id=id)
         
         #return jsonify(rows2)
-#
-#    except Exception as e:
- #       traceback.print_exc()
- #       return jsonify({'error': str(e)})
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({'error': str(e)})
 
 
 
