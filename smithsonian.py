@@ -79,16 +79,27 @@ def profile(id):
     sqlQueryProfile = "SELECT * FROM smithbase WHERE id=" + str(id) ## <----------------- Easy sql injection attack here by changing what ID is!!!!
     # Secondary INNER JOIN query to get corresponding reviews of chosen smith
     sqlQueryReviews = "SELECT rating, review FROM reviews INNER JOIN smithbase ON smithbase.id=reviews.smith_id WHERE smithbase.id=" + str(id)
-
+    sqlQueryRatingAvg = "SELECT rating FROM reviews INNER JOIN smithbase ON smithbase.id=reviews.smith_id WHERE smithbase.id=" + str(id)
+    
     profileRow = conn.execute(sqlQueryProfile).fetchall()
     reviewRows = conn.execute(sqlQueryReviews).fetchall()
+    ratingAvg = conn.execute(sqlQueryRatingAvg).fetchall()
+
+    #calc avg rating
+    sumRat = 0
+    for rating in ratingAvg:
+        sumRat = sumRat + rating[0]
+
+    averageRating = sumRat / len(ratingAvg)
+    averageRating = round(averageRating)
+    print(ratingAvg, "\n", averageRating, "\n", len(ratingAvg))
 
     # Debugging statement
     if (app.debug == True): print(reviewRows)
     
     conn.close()
     return render_template('smith_template.html', 
-                            id=profileRow[0][0], name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], age=profileRow[0][8], rate=profileRow[0][9],
+                            id=profileRow[0][0], name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], age=profileRow[0][8], rate=averageRating,
                             reviews=reviewRows
                             )
 
@@ -105,7 +116,7 @@ def rateFunction(id):
         print(id, rating, review)
 
         conn = get_db_connection()
-
+        
         query = "INSERT INTO reviews (smith_id, rating, review) VALUES (?, ?, ?);"
         conn.execute(query, (id, rating, review))
         conn.commit() 
