@@ -43,15 +43,18 @@ document.addEventListener("DOMContentLoaded", function() {
         searchResultsDiv.innerHTML = ""; // Clear previous results
         
         data.forEach(function(row) {
+            console.log(row)
             var smithBox = document.createElement("div");
             smithBox.classList.add("smith-box");
+            var id = row[0]
+
 
             // Create and append profile image
             var anchor = document.createElement("a");
-            anchor.href = "http://localhost:8097/" + row[0];
+            anchor.href = `http://localhost:8097/${id}`;
             anchor.target = "_blank";
             var image = document.createElement("img");
-            image.src = "static/pfp.jpg";
+            image.src = "static/img/pfp.jpg";
             image.alt = "Smith";
             anchor.appendChild(image);
             smithBox.appendChild(anchor);
@@ -73,30 +76,55 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             smithBox.appendChild(ratingStarsDiv);*/
 
-            // Create and append attributes table
             var table = document.createElement("table");
-            var attributes = ["Sex", "Nationality", "Occupation", "Age"];
-            for (var j = 3; j < 7; j++) {
-                var row = document.createElement("tr");
-                var header = document.createElement("th");
-                header.textContent = attributes[j - 3] + ":";
-                var dataCell = document.createElement("td");
-                dataCell.textContent = row[j];
-                row.appendChild(header);
-                row.appendChild(dataCell);
-                table.appendChild(row);
-            }
+
+            //manually creating rows for each attribute
+            var sexRow = document.createElement("tr");
+            var sexHeader = document.createElement("th");
+            sexHeader.textContent = "Sex:";
+            var sexDataCell = document.createElement("td");
+            sexDataCell.textContent = row[3]; 
+            sexRow.appendChild(sexHeader);
+            sexRow.appendChild(sexDataCell);
+            table.appendChild(sexRow);
+
+            var nationalityRow = document.createElement("tr");
+            var nationalityHeader = document.createElement("th");
+            nationalityHeader.textContent = "Nationality:";
+            var nationalityDataCell = document.createElement("td");
+            nationalityDataCell.textContent = row[4]; 
+            nationalityRow.appendChild(nationalityHeader);
+            nationalityRow.appendChild(nationalityDataCell);
+            table.appendChild(nationalityRow);
+
+            var occupationRow = document.createElement("tr");
+            var occupationHeader = document.createElement("th");
+            occupationHeader.textContent = "Occupation:";
+            var occupationDataCell = document.createElement("td");
+            occupationDataCell.textContent = row[5]; 
+            occupationRow.appendChild(occupationHeader);
+            occupationRow.appendChild(occupationDataCell);
+            table.appendChild(occupationRow);
+
+            var ageRow = document.createElement("tr");
+            var ageHeader = document.createElement("th");
+            ageHeader.textContent = "Age:";
+            var ageDataCell = document.createElement("td");
+            ageDataCell.textContent = row[8]; 
+            ageRow.appendChild(ageHeader);
+            ageRow.appendChild(ageDataCell);
+            table.appendChild(ageRow);
+
             smithBox.appendChild(table);
 
-            // Create and append learn more button
+            //create and append learn more button
             var learnMoreButton = document.createElement("a");
-            learnMoreButton.href = "http://localhost:8097/" + row[0];
+            learnMoreButton.href = `http://localhost:8097/${id}`;
             var button = document.createElement("button");
             button.classList.add("button");
             button.textContent = "Learn More";
             learnMoreButton.appendChild(button);
             smithBox.appendChild(learnMoreButton);
-
             searchResultsDiv.appendChild(smithBox);
         });
     }
