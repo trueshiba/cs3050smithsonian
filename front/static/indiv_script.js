@@ -19,7 +19,7 @@ function generateStars(rating) {
     for (var i = 0; i < numStars; i++) {
         var star = document.createElement("span");
         star.classList.add("star");
-        star.style.backgroundImage = "url('star.png')"; // Set star image background
+        // Set star image background
         starsContainer.appendChild(star);
     }
 }
