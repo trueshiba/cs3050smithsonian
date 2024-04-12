@@ -111,7 +111,6 @@ td:first-child {
 }
 
 .display-reviews{
-    width: 100%;
     background: transparent;
     padding: 5em;
     margin: 1%;
@@ -125,5 +124,5 @@ td:first-child {
 }
 
 .display-reviews tr{
-    background: white;
+    background: #18dfe2c7;
 }
