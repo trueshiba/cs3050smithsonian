@@ -98,7 +98,6 @@ def profile(id):
 def rateFunction(id):
     try:
 
-        print("Entered Rating Route!")
         data = request.get_json()
         rating = data.get('rating5')
         review = data.get('reviewWritten')
@@ -107,8 +106,8 @@ def rateFunction(id):
 
         conn = get_db_connection()
 
-        query = "UPDATE smithbase SET rating = ?, review = ? WHERE CustomerID = ?;"
-        conn.execute(query, (rating, review, id))
+        query = "INSERT INTO reviews (smith_id, rating, review) VALUES (?, ?, ?);"
+        conn.execute(query, (id, rating, review))
         conn.commit() 
 
         conn.close()

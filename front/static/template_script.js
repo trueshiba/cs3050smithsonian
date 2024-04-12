@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("form");
     var rating = document.getElementById("rate-select");
     var review = document.getElementById("review");
-    var id = document.getElementById("smith-id").value;
+    var idElement = document.getElementById("smith-id"); 
+    var id = idElement.value
 
+    console.log("ID: ", id, "\n")
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
