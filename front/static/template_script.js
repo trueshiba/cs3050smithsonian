@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("rate");
-    var rating = document.getElementById("rate-dropdown");
-    var review = document.getElementById("reviw");
+    var form = document.getElementById("form");
+    var rating = document.getElementById("rate-select");
+    var review = document.getElementById("review");
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Using AJAX to send data to flask
         $.ajax({
             type: "POST",
-            url: "/rate", // route to Flask search
+            url: "/rate/${id}", // route to Flask search
             contentType: "application/json", 
             data: JSON.stringify(entries),
             success: function(response) {
