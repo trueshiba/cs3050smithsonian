@@ -27,17 +27,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(response); // print resulting html to console
                 if (response.length === 0) { // if there are no results
                     displayNone(); //display a message that no results were found
-                } 
-                else {
+                } else {
                     displayResults(response); // display results using display function
-                    } 
+                } 
             },
             error: function(xhr, status, error) {
                 console.error(error);    
             }
         });
     });
-    // function to display the results
+
+    // Function to display the results
     function displayResults(data) {
         var searchResultsDiv = document.getElementById("search-results");
         searchResultsDiv.innerHTML = ""; // Clear previous results
@@ -45,51 +45,50 @@ document.addEventListener("DOMContentLoaded", function() {
         data.forEach(function(row) {
             var smithBox = document.createElement("div");
             smithBox.classList.add("smith-box");
-    
+
+            // Create and append profile image
             var anchor = document.createElement("a");
             anchor.href = "http://localhost:8097/" + row[0];
             anchor.target = "_blank";
-            smithBox.appendChild(anchor);
-    
             var image = document.createElement("img");
             image.src = "static/pfp.jpg";
             image.alt = "Smith";
             anchor.appendChild(image);
-    
+            smithBox.appendChild(anchor);
+
+            // Create and append name
             var nameHeader = document.createElement("h3");
             nameHeader.textContent = row[1] + " " + row[2];
             smithBox.appendChild(nameHeader);
-    
+
+            /* Create and append rating stars dynamically
+            var ratingStarsDiv = document.createElement("div");
+            ratingStarsDiv.classList.add("rating-stars");
+            var rating = row[9];
+            var numStars = Math.round(rating);
+            for (var i = 1; i = numStars; i++) {
+                var star = document.createElement("span");
+                star.classList.add("star");
+                ratingStarsDiv.appendChild(star);
+            }
+            smithBox.appendChild(ratingStarsDiv);*/
+
+            // Create and append attributes table
             var table = document.createElement("table");
+            var attributes = ["Sex", "Nationality", "Occupation", "Age"];
+            for (var j = 3; j < 7; j++) {
+                var row = document.createElement("tr");
+                var header = document.createElement("th");
+                header.textContent = attributes[j - 3] + ":";
+                var dataCell = document.createElement("td");
+                dataCell.textContent = row[j];
+                row.appendChild(header);
+                row.appendChild(dataCell);
+                table.appendChild(row);
+            }
             smithBox.appendChild(table);
-    
-            var idRow = document.createElement("tr");
-            var idHeader = document.createElement("th");
-            idHeader.textContent = "ID:";
-            var idData = document.createElement("td");
-            idData.textContent = row[0];
-            idRow.appendChild(idHeader);
-            idRow.appendChild(idData);
-            table.appendChild(idRow);
-    
-            var sexRow = document.createElement("tr");
-            var sexHeader = document.createElement("th");
-            sexHeader.textContent = "Sex:";
-            var sexData = document.createElement("td");
-            sexData.textContent = row[3];
-            sexRow.appendChild(sexHeader);
-            sexRow.appendChild(sexData);
-            table.appendChild(sexRow);
-    
-            var nationalityRow = document.createElement("tr");
-            var nationalityHeader = document.createElement("th");
-            nationalityHeader.textContent = "Nationality:";
-            var nationalityData = document.createElement("td");
-            nationalityData.textContent = row[4].split(';')[0];
-            nationalityRow.appendChild(nationalityHeader);
-            nationalityRow.appendChild(nationalityData);
-            table.appendChild(nationalityRow);
-    
+
+            // Create and append learn more button
             var learnMoreButton = document.createElement("a");
             learnMoreButton.href = "http://localhost:8097/" + row[0];
             var button = document.createElement("button");
@@ -97,12 +96,13 @@ document.addEventListener("DOMContentLoaded", function() {
             button.textContent = "Learn More";
             learnMoreButton.appendChild(button);
             smithBox.appendChild(learnMoreButton);
-    
+
             searchResultsDiv.appendChild(smithBox);
         });
     }
-    
 
+
+    // Function to display a message when no results are found
     function displayNone() {
         var searchResultsDiv = document.getElementById("search-results");
         searchResultsDiv.innerHTML = ""; // Clear previous results
@@ -112,7 +112,5 @@ document.addEventListener("DOMContentLoaded", function() {
         none.style.color = "white";                 //changing text color and border for visibility
         none.style.textShadow = "2px 2px 0 black"; 
         searchResultsDiv.appendChild(none);
-
-    
     }
-}); 
+});
