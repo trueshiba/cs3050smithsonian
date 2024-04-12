@@ -106,9 +106,9 @@ td:first-child {
     display: inline-block;
     width: 25px;
     height: 25px;
-    background-image: url('star.png');
     background-size: cover;
 }
+
 
 .display-reviews{
     background: transparent;
@@ -124,5 +124,5 @@ td:first-child {
 }
 
 .display-reviews tr{
-    background: #18dfe2c7;
+    background:white;
 }
