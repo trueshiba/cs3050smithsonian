@@ -99,7 +99,7 @@ def profile(id):
     
     conn.close()
     return render_template('smith_template.html', 
-                            id=profileRow[0][0], name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], age=profileRow[0][8], rate=averageRating,
+                            id=profileRow[0][0], name=profileRow[0][1], lastname=profileRow[0][2], sex=profileRow[0][3], nat=profileRow[0][4], occ=profileRow[0][5], life=profileRow[0][6],death=profileRow[0][7], age=profileRow[0][8], rate=averageRating,
                             reviews=reviewRows
                             )
 
