@@ -61,54 +61,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Create and append name
             var nameHeader = document.createElement("h3");
+            nameHeader.classList.add("names");
             nameHeader.textContent = row[1] + " " + row[2];
             smithBox.appendChild(nameHeader);
 
-
             var table = document.createElement("table");
+
+            // Create and append row for lived
+            var livedRow = document.createElement("tr");
+            var livedDataCell = document.createElement("td");
+            livedDataCell.classList.add("lived");
+            livedDataCell.textContent = `${row[6]} - ${row[7]}`;
+            livedRow.appendChild(livedDataCell);
+            table.appendChild(livedRow);
 
             //manually creating rows for each attribute
             var sexRow = document.createElement("tr");
-            var sexHeader = document.createElement("th");
-            sexHeader.textContent = "Sex:";
             var sexDataCell = document.createElement("td");
-            sexDataCell.textContent = row[3]; 
-            sexRow.appendChild(sexHeader);
+            sexDataCell.textContent = row[3];
             sexRow.appendChild(sexDataCell);
             table.appendChild(sexRow);
 
             var nationalityRow = document.createElement("tr");
-            var nationalityHeader = document.createElement("th");
-            nationalityHeader.textContent = "Nationality:";
             var nationalityDataCell = document.createElement("td");
-            nationalityDataCell.textContent = row[4]; 
-            nationalityRow.appendChild(nationalityHeader);
+            nationalityDataCell.textContent = row[4].split(';')[0];
             nationalityRow.appendChild(nationalityDataCell);
             table.appendChild(nationalityRow);
 
-            var occupationRow = document.createElement("tr");
-            var occupationHeader = document.createElement("th");
-            occupationHeader.textContent = "Occupation:";
-            var occupationDataCell = document.createElement("td");
-            occupationDataCell.textContent = row[5]; 
-            occupationRow.appendChild(occupationHeader);
-            occupationRow.appendChild(occupationDataCell);
-            table.appendChild(occupationRow);
-
-            var ageRow = document.createElement("tr");
-            var ageHeader = document.createElement("th");
-            ageHeader.textContent = "Age:";
-            var ageDataCell = document.createElement("td");
-            ageDataCell.textContent = row[8]; 
-            ageRow.appendChild(ageHeader);
-            ageRow.appendChild(ageDataCell);
-            table.appendChild(ageRow);
-
             smithBox.appendChild(table);
+
+            // Create and append button container
+            var btnContainer = document.createElement("div");
+            //btnContainer.classList.add("btn-container");
 
             //create and append learn more button
             var learnMoreButton = document.createElement("a");
             learnMoreButton.href = `http://localhost:8097/${id}`;
+            learnMoreButton.classList.add("btn-container"); // Add container styling
             var button = document.createElement("button");
             button.classList.add("button");
             button.textContent = "Learn More";
