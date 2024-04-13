@@ -64,17 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
             nameHeader.textContent = row[1] + " " + row[2];
             smithBox.appendChild(nameHeader);
 
-            /* Create and append rating stars dynamically
-            var ratingStarsDiv = document.createElement("div");
-            ratingStarsDiv.classList.add("rating-stars");
-            var rating = row[9];
-            var numStars = Math.round(rating);
-            for (var i = 1; i = numStars; i++) {
-                var star = document.createElement("span");
-                star.classList.add("star");
-                ratingStarsDiv.appendChild(star);
-            }
-            smithBox.appendChild(ratingStarsDiv);*/
 
             var table = document.createElement("table");
 

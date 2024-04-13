@@ -139,13 +139,19 @@ header p {
     max-width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-
+.smith-box table {
+    margin: 0 auto; /* This will horizontally center the table */
+}
 .smith-box img {
     position: relative;
     border: 2px solid black; 
     border-radius: 50%;
     width: 100%; 
     height: auto; 
+}
+
+.smith-box td{
+    text-align: center;
 }
 
 .smith-box .names {
