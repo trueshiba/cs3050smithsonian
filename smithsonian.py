@@ -90,9 +90,13 @@ def profile(id):
     for rating in ratingAvg:
         sumRat = sumRat + rating[0]
 
-    averageRating = sumRat / len(ratingAvg)
-    averageRating = round(averageRating)
-    print(ratingAvg, "\n", averageRating, "\n", len(ratingAvg))
+    if len(ratingAvg) > 0:
+        averageRating = sumRat / len(ratingAvg)
+        averageRating = round(averageRating)
+        print(ratingAvg, "\n", averageRating, "\n", len(ratingAvg))
+    else:
+        # If a smith doesnt have any reviews assume they are bad, therefore should be rated with a zero.
+        averageRating = 0
 
     # Debugging statement
     if (app.debug == True): print(reviewRows)
@@ -135,7 +139,7 @@ def rateFunction(id):
 
 
 if __name__ == '__main__':
-    app.debug = False
+    app.debug = True
 
     try:
         # Change debug=app.debug -> debug=True for auto reloading while coding and saving
