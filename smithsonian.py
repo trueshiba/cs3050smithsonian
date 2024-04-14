@@ -139,7 +139,7 @@ def rateFunction(id):
 
 
 if __name__ == '__main__':
-    app.debug = True
+    app.debug = False
 
     try:
         # Change debug=app.debug -> debug=True for auto reloading while coding and saving
