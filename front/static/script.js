@@ -67,6 +67,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             var table = document.createElement("table");
 
+            // Create and append row for rating
+            var ratingRow = document.createElement("tr");
+            var ratingDataCell = document.createElement("td");
+            ratingDataCell.classList.add("box-rating");
+            ratingDataCell.textContent = row[9];
+            ratingRow.appendChild(ratingDataCell);
+            table.appendChild(ratingRow);
+
             // Create and append row for lived
             var livedRow = document.createElement("tr");
             var livedDataCell = document.createElement("td");

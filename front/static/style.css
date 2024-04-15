@@ -159,6 +159,10 @@ header p {
     text-align: center;
 }
 
+.smith-box td.box-rating {
+    font-size: 35px;
+}
+
 .btn-container {
     display: flex;
     justify-content: center;
