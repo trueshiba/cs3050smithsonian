@@ -9,12 +9,7 @@ body {
     background-color: #ebede2;
 }
 
-.horiz-center {
-    display: grid;
-    justify-content: center;
-    background-color: rgb(255, 255, 255);
 
-}
 
 .form-style button {
     background-color: #007bff;
@@ -69,12 +64,12 @@ header {
     background-size: contain; 
     background-position: center;
     background-repeat: no-repeat;
- 
 }
 
 .character-sheet {
     display: flex;
-    margin-top: 40px; 
+    margin-top: 40px;
+    margin-bottom: 40px;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -96,26 +91,29 @@ header {
 }
 
 .attributes {
-    margin-top: 20px;
-    margin-left: 20px;
+    padding: 1em;
+    border: none;
+    margin-bottom: 2em;
 }
 
 table {
     border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to top, transparent, white);
+    border: none;
+    border-radius: 10px;
+    text-align: left;
     width: 100%;
 }
 
-table, td {
-    border: 1px solid #333;
+table td{
+    padding: 1em;
 }
 
-td {
-    padding: 8px;
+table tr td:nth-child(even) {
+    text-align: center;
 }
 
-td:first-child {
-    font-weight: bold;
-}
 
 .rating-stars {
     display: inline-block;
@@ -125,26 +123,48 @@ td:first-child {
 
 .star {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     background-image: url('img/star.png');
     background-size: cover;
 }
 
-
 .display-reviews{
-    background: transparent;
-    padding: 5em;
-    margin: 1%;
+    background: #aaa07c;
+    width: 100%;
+    padding: 1em;
     border: none;
 }
 
 .display-reviews p{
-    padding: 2em;
+    padding: 1em;
     font-size: 35px;
     text-align: center;
+    border-bottom: 2px solid black;
+    width: 50%; /* Adjust the width as needed */
+    margin: 1em auto;
 }
 
-.display-reviews tr{
-    background:white;
+.display-reviews table{
+    padding: 1em;
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+    background: linear-gradient(to top, #ebede2, white);
+}
+
+.horiz-center {
+    display: grid;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    padding: 2em;
+
+}
+
+.horiz-center button{
+    background: #aaa07c;
+}
+
+.horiz-center button:hover{
+    background: #706a52;
 }
