@@ -5,9 +5,9 @@
 ### The Front End
 
 ### Homepage
-![Homepage](front_page.png)
+![Homepage](img/front_page.png)
 
 ### Individual profiles with review section
-![Individual profiles](profile.png)
+![Individual profiles](img/profile.png)
 
-![Review section](reviews.png) 
+![Review section](img/reviews.png) 
